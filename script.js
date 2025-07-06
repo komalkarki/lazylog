@@ -83,21 +83,31 @@ const achievements = [
     { id: 'nap_champion', name: 'Nap Champion', condition: entries => entries.filter(e => e.tags.includes('Slept')).length >= 3 },
     { id: 'binge_master', name: 'Binge Master', condition: entries => entries.filter(e => e.tags.includes('Binged Netflix')).length >= 2 },
 ];
-
 function checkAchievements() {
     const entries = JSON.parse(localStorage.getItem('entries')) || [];
-    const unlocked = JSON.parse(localStorage.getItem('unlockedAchievements')) || [];
+    let unlocked = JSON.parse(localStorage.getItem('unlockedAchievements')) || [];
+
+    if (entries.length === 0) return; // no achievements without entries
+
+    let newUnlocks = false;
 
     achievements.forEach(ach => {
         if (!unlocked.includes(ach.id) && ach.condition(entries)) {
             unlocked.push(ach.id);
+            newUnlocks = true;
             alert(`🎉 Achievement Unlocked: ${ach.name}`);
         }
     });
 
-    localStorage.setItem('unlockedAchievements', JSON.stringify(unlocked));
-    displayAchievements();
+    if (newUnlocks) {
+        localStorage.setItem('unlockedAchievements', JSON.stringify(unlocked));
+    }
+console.log("Current entries:", entries);
+console.log("Unlocked so far:", unlocked);
+
+    displayAchievements(); // update UI
 }
+
 
 function displayAchievements() {
     const list = document.getElementById('achievements-list');
