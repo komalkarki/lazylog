@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyLog - Celebrate Your Inner Slacker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>LazyLog</h1>
+        <button id="dark-mode-toggle">☾</button>
+    </header>
+    <main>
+        <section id="motivation">
+            <h2>Daily Motivation</h2>
+            <p id="motivation-quote" class="fade-in"></p>
+        </section>
+
+        <section id="check-in">
+            <h2>Daily Check-in</h2>
+            <form id="check-in-form">
+                <label for="confession">What didn’t you do today?</label>
+                <input type="text" id="confession" required>
+                <label for="tags">Tags (optional, hold Ctrl/Cmd to multi-select)</label>
+                <select id="tags" multiple>
+                    <option value="Procrastinated">Procrastinated</option>
+                    <option value="Binged Netflix">Binged Netflix</option>
+                    <option value="Skipped Gym">Skipped Gym</option>
+                    <option value="Slept">Slept</option>
+                    <option value="Ate Again">Ate Again</option>
+                    <option value="Scrolled">Scrolled</option>
+                </select>
+                <label for="time-wasted-category">Wasted Time On:</label>
+                <select id="time-wasted-category">
+                    <option value="scrolling">Scrolling</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="bingeing">Bingeing</option>
+                    <option value="eating">Eating</option>
+                </select>
+                <label for="time-wasted-amount">Minutes Wasted:</label>
+                <input type="number" id="time-wasted-amount" min="0" value="0">
+                <button type="submit">Submit Confession</button>
+            </form>
+        </section>
+
+        <section id="anti-goals">
+            <h2>Anti-goals</h2>
+            <form id="anti-goals-form">
+                <label for="anti-goal">Set a Lazy Anti-goal:</label>
+                <input type="text" id="anti-goal" required>
+                <button type="submit">Add Anti-goal</button>
+            </form>
+            <ul id="anti-goals-list"></ul>
+        </section>
+
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <ul id="achievements-list"></ul>
+        </section>
+
+        <section id="stats">
+            <h2>Lazy Stats Dashboard</h2>
+            <div id="tag-frequencies"></div>
+            <div id="time-wasted"></div>
+            <div id="top-excuses"></div>
+        </section>
+
+        <button id="lazy-mode">Lazy Mode</button>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
